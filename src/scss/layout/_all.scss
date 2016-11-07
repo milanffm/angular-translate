@@ -1,0 +1,21 @@
+html {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+@import "header";
+
+@import "navigation/all";
+@import "content/all";
+
+@import "footer";
