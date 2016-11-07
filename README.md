@@ -1,4 +1,4 @@
-# Basis Theme width gulp
+# Angular multi language app
 
 Following dependencies are required for this project:
 
