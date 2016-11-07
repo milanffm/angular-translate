@@ -1,25 +1,32 @@
 /**
- * Created by mpeters on 10.02.16.
+ * Created by Milan Peters on 06.11.2016
  */
 
-module.exports = (function() {
+module.exports = function () {
     "use strict";
 
     // First include pollyfills
     require('./polyfills');
 
-    // from here include everything else
-    var factory = require('./factories/Demo.factory');
-    var stuff = [1,2,3,4,5];
+    var angular = require('angular');
+    var ngRoute = require('angular-route');
+    var ngAnimate = require('angular-animate');
 
+    // create the module and name it scotchApp
+    var appModule = angular.module('angularTranslationApp', [ngRoute, ngAnimate]);
 
-    factory.doSomeFactoryStuff(stuff);
+    require('./constants')(appModule);
+    require('./services')(appModule);
+    require('./config')(appModule);
+    require('./controller')(appModule);
+    // require('./directives')(appModule);
 
-    
-    console.log('new base project');
-    
-    
-}());
+    console.log(appModule);
 
+    // Export the application module so that it can be required by other components
+    return {
+        app: appModule
+    };
 
+}();
 

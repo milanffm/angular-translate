@@ -1,7 +1,16 @@
 /**
- * Created by mpeters on 28.04.16.
+ * Controller provider for KentBaronBrown
  */
 
-module.exports = {
-    NameOfController : require('./NameOf.controller.js')
+"use strict";
+
+// Export the controller provider
+module.exports = function(appModule) {
+    
+    //todo find a way to insert CONSTANTS here ..
+    var CONTROLLER = require('./../constants/CONSTANTS').CONTROLLER;
+
+    appModule.controller(CONTROLLER.CONTACT, require('./ContactController'));
+    appModule.controller(CONTROLLER.ABOUT, require('./AboutController'));
 };
+

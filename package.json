@@ -1,14 +1,21 @@
 {
-  "name": "BaseProject",
-  "version": "0.1.1",
+  "name": "angular-translate-app",
+  "version": "0.0.1",
   "author": "Milan Peters",
-  "description": "base project width npm, browserify, wachify and lib-sass",
+  "description": "angualar base app width translation functionality",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
-    "url": "https://git.luka.de/luka/base-project-width-gulp.git"
+    "url": "https://github.com/milanffm/angular-translate"
   },
   "dependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "angular-translate": "^2.13.0",
+    "document-offset": "^1.0.4",
+    "gsap": "^1.18.5",
     "lodash": "^4.10.0",
     "object-assign": "^4.0.1"
   },

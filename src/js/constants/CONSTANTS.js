@@ -7,5 +7,37 @@
 module.exports = {
     IDENTIFIER: {
         BODY: 'body'
+    },
+    ROUTING: {
+        TEMPLATES: {
+            HOME:       'static/templates/home.html',
+            CONTACT:    'static/templates/contact.html',
+            ABOUT:      'static/templates/about.html'
+        },
+        URLS: {
+            HOME:           '/',
+            CONTACT:        '/kontakt/',
+            ABOUT:          '/about/',
+            DETAIL:         '/detail/',
+            DETAIL_WITH_ID: '/detail/:detailID'
+        }
+    },
+    CONTROLLER: {
+        HOME:       'homeController',
+        CONTACT:    'contactController',
+        ABOUT:      'aboutController',
+        DETAIL:     'detailController'
+    },
+    DIRECTIVES: {
+        
+    },
+    SCROLL_DIRECTIONS: {
+        NONE: 'none',
+        UP: 'up',
+        DOWN: 'down'
+    },
+    
+    BREAK_POINTS : {
+        SMALL : 760
     }
 };

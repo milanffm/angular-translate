@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="de" ng-app="angularTranslationApp">
 <head>
     <meta charset="UTF-8">
-    <title>BaseProject gulp</title>
+    <title>Angular Translate App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/angular-translate/" />
+    <!--<base href="/" />-->
+    <meta name="fragment" content="!" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <link rel="stylesheet" type="text/css" href="dist/css/styles.css" media="all">
 </head>
-<body>
+<body ng-cloak>
 
-<h1>Base Project</h1>
-<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-<div class="wrapper">
-    <p>Hey Wrapper</p>
+<!-- HEADER AND NAVBAR -->
+<header>
+    <h1>Angular Translate App</h1>
 
-    <div>test second div</div>
+</header>
+
+
+<div ng-view>
+
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
+
 </div>
 
-<button>test button</button>
-<script type="text/javascript" src="dist/js/bundle.js"></script>
+<footer>
 
+    <nav>
+        <ul>
+            <li><a href="/angular-translate/">Home</a></li>
+            <li><a href="about/">About</a></li>
+            <li><a href="kontakt/">Kontakt</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<script type="text/javascript" src="dist/js/bundle.js"></script>
 
 </body>
 </html>
