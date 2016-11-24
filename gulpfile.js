@@ -14,11 +14,13 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var transform = require('vinyl-transform');
 var assign = require('lodash').assign;
+var browserSync = require('browser-sync');
 
 var TASKS = {
     WATCH: 'watch',
     BUILD: 'build',
     CLEAN: 'clean',
+    SERVE: 'serve',
     JS: {
         WATCH : 'js-watch',
         BUILD: 'js-build',
@@ -150,10 +152,20 @@ gulp.task(TASKS.CLEAN, function () {
     return del( [DIST.JS, DIST.CSS], {force: true} );
 });
 
+// ================ SERVER TASK  =================
+gulp.task(TASKS.SERVE, function () {
+    browserSync({
+        server: {
+            baseDir: "./"
+        }
+    });
+});
+
 // ================  THIS ARE THE IMPORTANT TASKS !!! ================
 
 // WATCH TASK for js and scss
-gulp.task (TASKS.WATCH, [TASKS.CLEAN, TASKS.JS.WATCH, TASKS.CSS.WATCH]);
+gulp.task (TASKS.WATCH, [TASKS.CLEAN, TASKS.JS.WATCH, TASKS.CSS.WATCH, TASKS.SERVE]);
+
 
 // BUILD TASK for js and scss
 gulp.task (TASKS.BUILD, [TASKS.CLEAN,  TASKS.JS.BUILD, TASKS.CSS.BUILD]);
