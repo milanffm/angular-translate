@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: about.html:3
+msgid "About"
+msgstr ""
+
+#: contact.html:4
+msgid "Contact"
+msgstr ""
+
+#: contact.html:10
+msgid "Hello"
+msgstr ""
+
+#: contact.html:5
+msgid "Lorem ipsum dolor sit amet, luptatum laboramus cum ex, est magna salutatus ne. Mea expetenda adolescens eu, vim elitr veritus fierent no. Ad sumo mutat per, consul tamquam argumentum ex vim. Doctu"
+msgstr ""

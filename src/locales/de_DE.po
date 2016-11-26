@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+#: about.html:3
+msgid "About"
+msgstr "Über"
+
+#: contact.html:4
+msgid "Contact"
+msgstr "Kontakt"
+
+#: contact.html:10
+msgid "Hello"
+msgstr "Hallo"
+
+#: contact.html:5
+msgid ""
+"Lorem ipsum dolor sit amet, luptatum laboramus cum ex, est magna salutatus "
+"ne. Mea expetenda adolescens eu, vim elitr veritus fierent no. Ad sumo mutat "
+"per, consul tamquam argumentum ex vim. Doctu"
+msgstr "Lorem DEUTSCH"

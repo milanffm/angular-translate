@@ -15,12 +15,15 @@ var buffer = require('vinyl-buffer');
 var transform = require('vinyl-transform');
 var assign = require('lodash').assign;
 var browserSync = require('browser-sync');
+var gettext = require('gulp-angular-gettext');
 
 var TASKS = {
     WATCH: 'watch',
     BUILD: 'build',
     CLEAN: 'clean',
     SERVE: 'serve',
+    POT:    'pot',
+    TRANSLATE: 'translate',
     JS: {
         WATCH : 'js-watch',
         BUILD: 'js-build',
@@ -36,12 +39,18 @@ var DIST = {
     CSS : './dist/css',
     JS : './dist/js',
     JS_FILE : 'bundle.js',
-    JS_FILE_MIN: 'bundle.js'
+    JS_FILE_MIN: 'bundle.js',
+    LOCALES: './dist/locales'
 };
 
 var SRC = {
     SCSS : './src/scss/**/*.scss',
-    JS_START : './src/js/app.js'
+    JS_START : './src/js/app.js',
+    GET_TEXT_TEMPLATES : './static/templates/**/*.html',    
+    GET_TEXT_JS : './src/js/**/*.js',
+    PO_FILES: 'src/locales/**/*.po',
+    POT_FIELS: './src/locales'
+
 };
 
 
@@ -114,6 +123,10 @@ function gulpBrowserifyBuild(taskName, srcEntries, bundleFile, targetDirectory)
     });
 }
 
+
+ 
+
+
 // Create the JS build and watch tasks:
 gulpBrowserifyBuild(TASKS.JS.BUILD, SRC.JS_START, DIST.JS_FILE_MIN, DIST.JS);
 
@@ -146,6 +159,27 @@ gulp.task(TASKS.CSS.WATCH, [TASKS.CSS.DEFAULT], function () {
 // ================ CSS TASKS END =================
 
 
+// ================ get translations from js and template files and create pot file  =================
+
+gulp.task(TASKS.POT, function () {
+    return gulp.src([SRC.GET_TEXT_TEMPLATES, SRC.GET_TEXT_JS])
+        .pipe(gettext.extract('template.pot', {
+            // options to pass to angular-gettext-tools...
+        }))
+        .pipe(gulp.dest(SRC.POT_FIELS));
+});
+
+// ================ translate po files task  =================
+
+gulp.task(TASKS.TRANSLATE, function () {
+    return gulp.src(SRC.PO_FILES)
+        .pipe(gettext.compile({
+            // options to pass to angular-gettext-tools...
+            format: 'json'
+        }))
+        .pipe(gulp.dest(DIST.LOCALES));
+});
+
 // ================ CLEAR TASK  =================
 
 gulp.task(TASKS.CLEAN, function () {
@@ -164,10 +198,10 @@ gulp.task(TASKS.SERVE, function () {
 // ================  THIS ARE THE IMPORTANT TASKS !!! ================
 
 // WATCH TASK for js and scss
-gulp.task (TASKS.WATCH, [TASKS.CLEAN, TASKS.JS.WATCH, TASKS.CSS.WATCH, TASKS.SERVE]);
+gulp.task (TASKS.WATCH, [TASKS.CLEAN,'translate', TASKS.JS.WATCH, TASKS.CSS.WATCH, TASKS.SERVE]);
 
 
 // BUILD TASK for js and scss
-gulp.task (TASKS.BUILD, [TASKS.CLEAN,  TASKS.JS.BUILD, TASKS.CSS.BUILD]);
+gulp.task (TASKS.BUILD, [TASKS.CLEAN,'translate',  TASKS.JS.BUILD, TASKS.CSS.BUILD]);
 
 // ==================================================================== 

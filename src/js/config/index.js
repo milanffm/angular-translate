@@ -3,7 +3,7 @@
  */
 
 /**
- * Configures the KentBaronBrown angular module
+ * Configures the angular-translate angular module
  *
  * @return {Function}
  */
