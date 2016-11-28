@@ -11,30 +11,22 @@ module.exports = function () {
     var angular = require('angular');
     var ngRoute = require('angular-route');
     var ngAnimate = require('angular-animate');
-    var ngTranslation = require('angular-translate');
-    var ngTranslateLoaderStaticFilse = require('angular-translate-loader-static-files');
+    var ngGettext = require('angular-gettext');
 
     // create the module and name it scotchApp
-    var appModule = angular.module('angularTranslationApp', [ngRoute, ngAnimate, ngTranslation]);
+    var appModule = angular.module('angularTranslationApp', [ngRoute, ngAnimate, ngGettext]);
 
-    angular.module('angularTranslationApp').config(function ($translateProvider) {
-        $translateProvider.translations('de', {
-                APP_HEADLINE:  'Großartige AngularJS App',
-                NAV_HOME:      'Zur Startseite',
-                NAV_ABOUT:     'Über',
-                APP_TEXT:      'Irgendein Text über eine großartige AngularJS App.'
-        });
 
-        $translateProvider.translations('en', {
-            APP_HEADLINE:  'awsome angular app',
-            NAV_HOME:      'Zur Startseite',
-            NAV_ABOUT:     'Über',
-            APP_TEXT:      'Irgendein Text über eine großartige AngularJS App.'
-        });
-        // Nicht vergessen: die Standardsprache
-        $translateProvider.preferredLanguage('de');
-        $translateProvider.useSanitizeValueStrategy('escape');
+    appModule.run(function (gettextCatalog) {
+    
+        gettextCatalog.setCurrentLanguage('de_DE');
+        gettextCatalog.debug = true;
+        gettextCatalog.loadRemote("/dist/locales/de_DE.json");
+
+        console.log(gettextCatalog.getCurrentLanguage());
+    
     });
+
 
     require('./constants')(appModule);
     require('./services')(appModule);
