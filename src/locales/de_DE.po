@@ -1,22 +1,26 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"X-Generator: Poedit 1.8.11\n"
 "Last-Translator: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Team: \n"
 "Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: about.html:3
+#: about.html:3 index.html:34
 msgid "About"
 msgstr "Über"
 
-#: contact.html:4
+#: index.html:18
+msgid "Angular Translate App"
+msgstr "Angular Translate App DE"
+
+#: contact.html:4 index.html:35
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -24,9 +28,22 @@ msgstr "Kontakt"
 msgid "Hello"
 msgstr "Hallo"
 
+#: index.html:33
+msgid "Home"
+msgstr "Start"
+
 #: contact.html:5
 msgid ""
 "Lorem ipsum dolor sit amet, luptatum laboramus cum ex, est magna salutatus "
 "ne. Mea expetenda adolescens eu, vim elitr veritus fierent no. Ad sumo mutat "
 "per, consul tamquam argumentum ex vim. Doctu"
 msgstr "Lorem DEUTSCH"
+
+#~ msgid "Kloster Toplou"
+#~ msgstr "Kloster Toplou DE"
+
+#~ msgid "Kloster Toplou DEFAULT 123"
+#~ msgstr "Kloster Toplou DE"
+
+#~ msgid "Cotact"
+#~ msgstr "Kontakt"

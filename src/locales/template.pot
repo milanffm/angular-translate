@@ -5,15 +5,25 @@ msgstr ""
 "Project-Id-Version: \n"
 
 #: about.html:3
+#: index.html:34
 msgid "About"
 msgstr ""
 
+#: index.html:18
+msgid "Angular Translate App"
+msgstr ""
+
 #: contact.html:4
+#: index.html:35
 msgid "Contact"
 msgstr ""
 
 #: contact.html:10
 msgid "Hello"
+msgstr ""
+
+#: index.html:33
+msgid "Home"
 msgstr ""
 
 #: contact.html:5
