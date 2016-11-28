@@ -46,7 +46,8 @@ var DIST = {
 var SRC = {
     SCSS : './src/scss/**/*.scss',
     JS_START : './src/js/app.js',
-    GET_TEXT_TEMPLATES : './static/templates/**/*.html',    
+    GET_TEXT_TEMPLATES : './static/templates/**/*.html',  
+    GET_INDEX_FILE: './*.html',     
     GET_TEXT_JS : './src/js/**/*.js',
     PO_FILES: 'src/locales/**/*.po',
     POT_FIELS: './src/locales'
@@ -124,9 +125,6 @@ function gulpBrowserifyBuild(taskName, srcEntries, bundleFile, targetDirectory)
 }
 
 
- 
-
-
 // Create the JS build and watch tasks:
 gulpBrowserifyBuild(TASKS.JS.BUILD, SRC.JS_START, DIST.JS_FILE_MIN, DIST.JS);
 
@@ -162,19 +160,18 @@ gulp.task(TASKS.CSS.WATCH, [TASKS.CSS.DEFAULT], function () {
 // ================ get translations from js and template files and create pot file  =================
 
 gulp.task(TASKS.POT, function () {
-    return gulp.src([SRC.GET_TEXT_TEMPLATES, SRC.GET_TEXT_JS])
+    return gulp.src([SRC.GET_TEXT_TEMPLATES, SRC.GET_INDEX_FILE, SRC.GET_TEXT_JS])
         .pipe(gettext.extract('template.pot', {
             // options to pass to angular-gettext-tools...
         }))
         .pipe(gulp.dest(SRC.POT_FIELS));
 });
 
-// ================ translate po files task  =================
+// ================ transform po files to json files  =================
 
 gulp.task(TASKS.TRANSLATE, function () {
     return gulp.src(SRC.PO_FILES)
         .pipe(gettext.compile({
-            // options to pass to angular-gettext-tools...
             format: 'json'
         }))
         .pipe(gulp.dest(DIST.LOCALES));
