@@ -26,7 +26,7 @@ var TASKS = {
     TRANSLATE: 'translate',
     JS: {
         WATCH : 'js-watch',
-        BUILD: 'js-build',
+        BUILD: 'js-build'
     },
     CSS : {
         DEFAULT: 'scss',
@@ -51,7 +51,6 @@ var SRC = {
     GET_TEXT_JS : './src/js/**/*.js',
     PO_FILES: 'src/locales/**/*.po',
     POT_FIELS: './src/locales'
-
 };
 
 
@@ -132,6 +131,11 @@ createWatchifyTask(TASKS.JS.WATCH, SRC.JS_START, DIST.JS_FILE, DIST.JS);
 
 // ================ CSS TASKS =================
 
+/**
+ * CSS Default task
+ * return css file and sourcemap
+ */
+
 gulp.task(TASKS.CSS.DEFAULT, function () {
     return gulp.src(SRC.SCSS)
         .pipe(sourcemaps.init())
@@ -142,6 +146,11 @@ gulp.task(TASKS.CSS.DEFAULT, function () {
         .pipe(gulp.dest(DIST.CSS));
 });
 
+/**
+ * CSS build task
+ * return css file
+ */
+
 gulp.task(TASKS.CSS.BUILD, function () {
     return gulp.src(SRC.SCSS)
         .pipe(sass({
@@ -150,6 +159,9 @@ gulp.task(TASKS.CSS.BUILD, function () {
         .pipe(gulp.dest(DIST.CSS));
 });
 
+/**
+ * CSS watch task, first run default task and then watch for changes
+ */
 gulp.task(TASKS.CSS.WATCH, [TASKS.CSS.DEFAULT], function () {
     gulp.watch(SRC.SCSS, [TASKS.CSS.DEFAULT]);
 });
@@ -157,8 +169,11 @@ gulp.task(TASKS.CSS.WATCH, [TASKS.CSS.DEFAULT], function () {
 // ================ CSS TASKS END =================
 
 
-// ================ get translations from js and template files and create pot file  =================
-
+/**
+ * pot task
+ * get translations from js and template files and create pot file
+ * return template.pot
+ */
 gulp.task(TASKS.POT, function () {
     return gulp.src([SRC.GET_TEXT_TEMPLATES, SRC.GET_INDEX_FILE, SRC.GET_TEXT_JS])
         .pipe(gettext.extract('template.pot', {
@@ -167,8 +182,11 @@ gulp.task(TASKS.POT, function () {
         .pipe(gulp.dest(SRC.POT_FIELS));
 });
 
-// ================ transform po files to json files  =================
 
+/**
+ * transform po files to json files
+ * return *.json files for each language like de_DE.json
+ */
 gulp.task(TASKS.TRANSLATE, function () {
     return gulp.src(SRC.PO_FILES)
         .pipe(gettext.compile({
@@ -177,13 +195,20 @@ gulp.task(TASKS.TRANSLATE, function () {
         .pipe(gulp.dest(DIST.LOCALES));
 });
 
-// ================ CLEAR TASK  =================
+/**
+ * Clear task
+ * remove all folders in ./dist/
+ */
 
 gulp.task(TASKS.CLEAN, function () {
     return del( [DIST.JS, DIST.CSS], {force: true} );
 });
 
-// ================ SERVER TASK  =================
+/**
+ * serve task
+ * create a localhost on
+ * http://localhost:3000/
+ */
 gulp.task(TASKS.SERVE, function () {
     browserSync({
         server: {
@@ -194,11 +219,15 @@ gulp.task(TASKS.SERVE, function () {
 
 // ================  THIS ARE THE IMPORTANT TASKS !!! ================
 
-// WATCH TASK for js and scss
-gulp.task (TASKS.WATCH, [TASKS.CLEAN,'translate', TASKS.JS.WATCH, TASKS.CSS.WATCH, TASKS.SERVE]);
+/**
+ * WATCH TASK for js and scss and then load a localhost
+ */
+gulp.task (TASKS.WATCH, [TASKS.CLEAN, TASKS.TRANSLATE, TASKS.JS.WATCH, TASKS.CSS.WATCH, TASKS.SERVE]);
 
 
-// BUILD TASK for js and scss
-gulp.task (TASKS.BUILD, [TASKS.CLEAN,'translate',  TASKS.JS.BUILD, TASKS.CSS.BUILD]);
+/**
+ * BUILD TASK for js, scss and translation files
+ */
+gulp.task (TASKS.BUILD, [TASKS.CLEAN, TASKS.TRANSLATE,  TASKS.JS.BUILD, TASKS.CSS.BUILD]);
 
 // ==================================================================== 
