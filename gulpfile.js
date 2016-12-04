@@ -46,8 +46,8 @@ var DIST = {
 var SRC = {
     SCSS : './src/scss/**/*.scss',
     JS_START : './src/js/app.js',
-    GET_TEXT_TEMPLATES : './static/templates/**/*.html',  
-    GET_INDEX_FILE: './*.html',     
+    GET_TEXT_TEMPLATES : './static/templates/**/*.html',
+    GET_INDEX_FILE: './*.html',
     GET_TEXT_JS : './src/js/**/*.js',
     PO_FILES: 'src/locales/**/*.po',
     POT_FIELS: './src/locales'
@@ -201,7 +201,7 @@ gulp.task(TASKS.TRANSLATE, function () {
  */
 
 gulp.task(TASKS.CLEAN, function () {
-    return del( [DIST.JS, DIST.CSS], {force: true} );
+    return del( [DIST.JS, DIST.CSS, DIST.LOCALES], {force: true} );
 });
 
 /**
@@ -216,12 +216,12 @@ gulp.task(TASKS.SERVE, server);
 /**
  * WATCH TASK for js and scss and then load a localhost
  */
-gulp.task (TASKS.WATCH, [TASKS.CLEAN, TASKS.TRANSLATE, TASKS.JS.WATCH, TASKS.CSS.WATCH, TASKS.SERVE]);
+gulp.task (TASKS.WATCH, [TASKS.CLEAN, TASKS.JS.WATCH, TASKS.CSS.WATCH,TASKS.TRANSLATE, TASKS.SERVE]);
 
 
 /**
  * BUILD TASK for js, scss and translation files
  */
-gulp.task (TASKS.BUILD, [TASKS.CLEAN, TASKS.TRANSLATE,  TASKS.JS.BUILD, TASKS.CSS.BUILD]);
+gulp.task (TASKS.BUILD, [TASKS.CLEAN,  TASKS.JS.BUILD, TASKS.CSS.BUILD, TASKS.TRANSLATE]);
 
 // ==================================================================== 
