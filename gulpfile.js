@@ -14,7 +14,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var transform = require('vinyl-transform');
 var assign = require('lodash').assign;
-var browserSync = require('browser-sync');
+var server = require('lite-server').server;
 var gettext = require('gulp-angular-gettext');
 
 var TASKS = {
@@ -209,13 +209,7 @@ gulp.task(TASKS.CLEAN, function () {
  * create a localhost on
  * http://localhost:3000/
  */
-gulp.task(TASKS.SERVE, function () {
-    browserSync({
-        server: {
-            baseDir: "./"
-        }
-    });
-});
+gulp.task(TASKS.SERVE, server);
 
 // ================  THIS ARE THE IMPORTANT TASKS !!! ================
 

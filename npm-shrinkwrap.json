@@ -637,6 +637,11 @@
       "from": "connect-history-api-fallback@>=1.1.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/connect-history-api-fallback/-/connect-history-api-fallback-1.3.0.tgz"
     },
+    "connect-logger": {
+      "version": "0.0.1",
+      "from": "connect-logger@0.0.1",
+      "resolved": "https://registry.npmjs.org/connect-logger/-/connect-logger-0.0.1.tgz"
+    },
     "console-browserify": {
       "version": "1.1.0",
       "from": "console-browserify@>=1.1.0 <2.0.0",
@@ -2617,6 +2622,11 @@
       "from": "limiter@>=1.0.5 <2.0.0",
       "resolved": "https://registry.npmjs.org/limiter/-/limiter-1.1.0.tgz"
     },
+    "lite-server": {
+      "version": "2.2.2",
+      "from": "lite-server@*",
+      "resolved": "https://registry.npmjs.org/lite-server/-/lite-server-2.2.2.tgz"
+    },
     "load-json-file": {
       "version": "1.1.0",
       "from": "load-json-file@>=1.0.0 <2.0.0",
@@ -2923,6 +2933,11 @@
       "version": "4.0.8",
       "from": "module-deps@>=4.0.8 <5.0.0",
       "resolved": "https://registry.npmjs.org/module-deps/-/module-deps-4.0.8.tgz"
+    },
+    "moment": {
+      "version": "2.17.1",
+      "from": "moment@*",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.17.1.tgz"
     },
     "ms": {
       "version": "0.7.2",
