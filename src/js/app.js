@@ -17,16 +17,6 @@ module.exports = function () {
     var appModule = angular.module('angularTranslationApp', [ngRoute, ngAnimate, ngGettext]);
 
 
-    appModule.run(function (gettextCatalog) {
-    
-        gettextCatalog.setCurrentLanguage('de_DE');
-        gettextCatalog.debug = true;
-        gettextCatalog.loadRemote("/dist/locales/de_DE.json");
-
-        console.log(gettextCatalog.getCurrentLanguage());
-    
-    });
-
 
     require('./constants')(appModule);
     require('./services')(appModule);

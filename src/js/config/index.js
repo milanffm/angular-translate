@@ -7,11 +7,12 @@
  *
  * @return {Function}
  */
-module.exports = function(appModule)
-{
+module.exports = function (appModule) {
     "use strict";
 
     var routing = require('./ConfigureRouting.js');
+
+    appModule.run( require('./ConfigureLanguage.js'));
 
     appModule.config(routing.config);
 
@@ -21,5 +22,5 @@ module.exports = function(appModule)
     //         detailSlider:  'templates/detail-slider.html'
     //     };
     // });
-    
+
 };
