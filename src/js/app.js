@@ -16,13 +16,11 @@ module.exports = function () {
     // create the module and name it scotchApp
     var appModule = angular.module('angularTranslationApp', [ngRoute, ngAnimate, ngGettext]);
 
-
-
     require('./constants')(appModule);
     require('./services')(appModule);
     require('./config')(appModule);
     require('./controller')(appModule);
-    // require('./directives')(appModule);
+    require('./directives')(appModule);
 
     console.log(appModule);
 

@@ -12,9 +12,9 @@ module.exports = (function () {
      */
     function ConfigureLanguage(CONSTANTS, gettextCatalog) {
 
-        gettextCatalog.setCurrentLanguage('de_DE');
+        //gettextCatalog.setCurrentLanguage('de_DE');
         gettextCatalog.debug = true;
-        gettextCatalog.loadRemote("/dist/locales/de_DE.json");
+        gettextCatalog.loadRemote(CONSTANTS.TEMPLATES.LANGUAGE_FILES.DE);
 
         console.log(gettextCatalog.getCurrentLanguage());
 

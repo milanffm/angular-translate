@@ -28,8 +28,13 @@ module.exports = {
         ABOUT:      'aboutController',
         DETAIL:     'detailController'
     },
-    DIRECTIVES: {
-        
+    TEMPLATES: {
+        DIRECTIVES: {
+            LANGUAGE_SWITCHER: 'static/templates/language-switcher.html'
+        },
+        LANGUAGE_FILES: {
+            DE: "/dist/locales/de_DE.json"
+        }
     },
     SCROLL_DIRECTIONS: {
         NONE: 'none',
