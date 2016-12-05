@@ -36,9 +36,10 @@ var TASKS = {
 };
 
 var DIST = {
-    CSS : './dist/css',
-    JS : './dist/js',
-    JS_FILE : 'bundle.js',
+    BASE: './dist/',
+    CSS: './dist/css',
+    JS: './dist/js',
+    JS_FILE: 'bundle.js',
     JS_FILE_MIN: 'bundle.js',
     LOCALES: './dist/locales'
 };
@@ -82,7 +83,7 @@ function createWatchifyTask(taskName, srcFile, targetFile, targetDirectory)
             .pipe(source(targetFile))
             // optional, remove if you don't need to buffer file contents
             .pipe(buffer())
-            // optional, remove if you dont want sourcemaps
+            // optional, remove if you don't want sourcemaps
             .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
             // Add transformation tasks to the pipeline here.
             .pipe(sourcemaps.write()) // writes .map file
@@ -187,12 +188,13 @@ gulp.task(TASKS.POT, function () {
  * transform po files to json files
  * return *.json files for each language like de_DE.json
  */
-gulp.task(TASKS.TRANSLATE, function () {
-    return gulp.src(SRC.PO_FILES)
+gulp.task(TASKS.TRANSLATE, [TASKS.CLEAN], function () {
+    var stream = gulp.src(SRC.PO_FILES)
         .pipe(gettext.compile({
             format: 'json'
         }))
         .pipe(gulp.dest(DIST.LOCALES));
+    return stream
 });
 
 /**
@@ -201,7 +203,7 @@ gulp.task(TASKS.TRANSLATE, function () {
  */
 
 gulp.task(TASKS.CLEAN, function () {
-    return del( [DIST.JS, DIST.CSS, DIST.LOCALES], {force: true} );
+    return del( [DIST.BASE], {force: true} );
 });
 
 /**
@@ -215,13 +217,14 @@ gulp.task(TASKS.SERVE, server);
 
 /**
  * WATCH TASK for js and scss and then load a localhost
+ * clean task is run before translate task
  */
-gulp.task (TASKS.WATCH, [TASKS.CLEAN, TASKS.JS.WATCH, TASKS.CSS.WATCH,TASKS.TRANSLATE, TASKS.SERVE]);
+gulp.task (TASKS.WATCH, [TASKS.TRANSLATE , TASKS.JS.WATCH, TASKS.CSS.WATCH, TASKS.SERVE]);
 
 
 /**
  * BUILD TASK for js, scss and translation files
  */
-gulp.task (TASKS.BUILD, [TASKS.CLEAN,  TASKS.JS.BUILD, TASKS.CSS.BUILD, TASKS.TRANSLATE]);
+gulp.task (TASKS.BUILD, [TASKS.TRANSLATE, TASKS.JS.BUILD, TASKS.CSS.BUILD]);
 
 // ==================================================================== 
