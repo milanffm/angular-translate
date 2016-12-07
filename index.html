@@ -11,11 +11,12 @@
 
     <link rel="stylesheet" type="text/css" href="dist/css/styles.css" media="all">
 </head>
-<body ng-cloak translate-cloak>
+<body ng-cloak>
 
 <!-- HEADER AND NAVBAR -->
 <header>
-    <h1 translate="APP_HEADLINE">Kloster Toplou</h1>
+    <h1 translate>Angular Translate App</h1>
+    <language-switcher></language-switcher>
 
 </header>
 
@@ -30,9 +31,9 @@
 
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="about/">About</a></li>
-            <li><a href="kontakt/">Kontakt</a></li>
+            <li><a translate href="/">Home</a></li>
+            <li><a translate href="about/">About</a></li>
+            <li><a translate href="kontakt/">Contact</a></li>
         </ul>
     </nav>
 </footer>

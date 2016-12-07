@@ -29,4 +29,18 @@ If necessary:
 npm run frontend-watch
 ```
 
+## Translations
+
+to get text from templates and js files and  create .pot file run:
+
+```shell
+npm run pot
+```
+
+than you have to create a translations (.po files) maybe witch poedit (https://poedit.net/) and create json files for the angular-translate module:
+
+```shell
+npm run translate
+```
+
 
