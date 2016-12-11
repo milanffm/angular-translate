@@ -13,5 +13,6 @@ module.exports = function(appModule) {
     require('./Scroll.service')(appModule);
     require('./Viewport.service')(appModule);
     require('./Window.service')(appModule);
+    require('./test.service')(appModule);
 
 };
