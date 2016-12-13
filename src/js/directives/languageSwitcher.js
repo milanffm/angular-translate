@@ -9,8 +9,6 @@ module.exports = (function () {
      * Creates the language switch directive
      */
 
-    var moment = require('moment');
-
     function SelectOrganisation(CONSTANTS, gettextCatalog) {
 
         return {
