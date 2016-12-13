@@ -9,6 +9,7 @@ module.exports = (function() {
 
     var AboutController = function ($scope) {
         $scope.message = 'About Page';
+        console.log('ABOUT CONTROLLER ');
     };
 
     AboutController.$inject = ['$scope'];
